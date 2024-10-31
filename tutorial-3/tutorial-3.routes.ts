@@ -1,12 +1,12 @@
 // @deno-types="@types/express"
-import express from 'express'
+import e from 'express'
 
 const MOCKED_USERS = [
   { id: 1, username: 'hello', name: 'Hello' },
   { id: 2, username: 'world', name: 'World' },
 ] as const
 
-const tutorial_3_routes = express.Router()
+const tutorial_3_routes = e.Router()
 
 // deno-lint-ignore no-explicit-any
 tutorial_3_routes.get('/api/users/:id', (req, res): any => {
