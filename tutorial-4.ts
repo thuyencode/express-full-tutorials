@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 // @deno-types="@types/express"
-import e from 'express'
+import express from 'express'
 
 const MOCKED_USERS = [
   { id: 1, username: 'javascript', name: 'JavaScript' },
@@ -11,7 +11,7 @@ const MOCKED_USERS = [
   { id: 6, username: 'gdscript', name: 'GDScript' },
 ] as const
 
-const tutorial_4_routes = e.Router()
+const tutorial_4_routes = express.Router()
 
 interface ReqQuery {
   filter?: keyof typeof MOCKED_USERS[number]
@@ -21,7 +21,7 @@ interface ReqQuery {
 tutorial_4_routes.get(
   '/api/users',
   // deno-lint-ignore ban-types
-  (req: e.Request<{}, {}, {}, ReqQuery>, res): any => {
+  (req: express.Request<{}, {}, {}, ReqQuery>, res): any => {
     const { filter, value } = req.query
 
     if (filter && value) {
