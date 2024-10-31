@@ -8,21 +8,6 @@ const MOCKED_USERS = [
 
 const tutorial_3_routes = express.Router()
 
-tutorial_3_routes.get('/', (_req, res) => {
-  res.status(201).send({ message: 'Hello, World!' })
-})
-
-tutorial_3_routes.get('/api/users', (_req, res) => {
-  res.send(MOCKED_USERS)
-})
-
-tutorial_3_routes.get('/api/products', (_req, res) => {
-  res.send([
-    { id: 1, product: 'deno', version: '2' },
-    { id: 2, product: 'nodejs', name: '23' },
-  ])
-})
-
 // deno-lint-ignore no-explicit-any
 tutorial_3_routes.get('/api/users/:id', (req, res): any => {
   const parsedId = Number.parseInt(req.params.id)
