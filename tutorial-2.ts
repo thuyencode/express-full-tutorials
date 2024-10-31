@@ -1,7 +1,7 @@
 // @deno-types="@types/express"
-import express from 'express'
+import e from 'express'
 
-const tutorial_2_routes = express.Router()
+const tutorial_2_routes = e.Router()
 
 tutorial_2_routes.get('/', (_req, res) => {
   res.status(201).send({ message: 'Hello, World!' })
