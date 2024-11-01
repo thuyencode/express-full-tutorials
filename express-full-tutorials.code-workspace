@@ -13,6 +13,6 @@
     }
   },
   "extensions": {
-    "recommendations": ["rangav.vscode-thunder-client"]
+    "recommendations": ["rangav.vscode-thunder-client", "denoland.vscode-deno"]
   }
 }
