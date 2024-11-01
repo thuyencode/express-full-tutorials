@@ -1,24 +1,12 @@
 // @deno-types="@types/express"
 import e from 'express'
-import tutorial_2_routes from './tutorial-2.ts'
-import tutorial_3_routes from './tutorial-3.ts'
-import tutorial_4_routes from './tutorial-4.ts'
-import tutorial_5_routes from './tutorial-5.ts'
-import tutorial_6_routes from './tutorial-6.ts'
-import tutorial_7_routes from './tutorial-7.ts'
-import tutorial_8_routes from './tutorial-8.ts'
+import tutorials_routes from './tutorials/index.ts'
 
 const PORT = Deno.env.get('PORT') || 8080
 
 const app = e()
 
-app.use('/tutorial-2', tutorial_2_routes)
-app.use('/tutorial-3', tutorial_3_routes)
-app.use('/tutorial-4', tutorial_4_routes)
-app.use('/tutorial-5', tutorial_5_routes)
-app.use('/tutorial-6', tutorial_6_routes)
-app.use('/tutorial-7', tutorial_7_routes)
-app.use('/tutorial-8', tutorial_8_routes)
+app.use('/tutorials', tutorials_routes)
 
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}.`)
