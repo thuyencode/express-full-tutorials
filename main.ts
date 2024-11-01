@@ -6,6 +6,8 @@ const PORT = Deno.env.get('PORT') || 8080
 
 const app = e()
 
+app.use(e.json())
+
 app.use('/tutorials', tutorials_routes)
 
 app.listen(PORT, () => {
