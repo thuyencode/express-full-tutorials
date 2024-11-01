@@ -8,8 +8,7 @@ const MOCKED_USERS = [
 
 const tutorial_3_routes = e.Router()
 
-// deno-lint-ignore no-explicit-any
-tutorial_3_routes.get('/api/users/:id', (req, res): any => {
+tutorial_3_routes.get('/api/users/:id', (req, res) => {
   const parsedId = Number.parseInt(req.params.id)
 
   if (Number.isNaN(parsedId)) {

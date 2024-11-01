@@ -1,4 +1,3 @@
-// deno-lint-ignore-file no-explicit-any
 // @deno-types="@types/express"
 import e from 'express'
 
@@ -21,7 +20,7 @@ interface ReqQuery {
 tutorial_4_routes.get(
   '/api/users',
   // deno-lint-ignore ban-types
-  (req: e.Request<{}, {}, {}, ReqQuery>, res): any => {
+  (req: e.Request<{}, {}, {}, ReqQuery>, res) => {
     const { filter, value } = req.query
 
     if (filter && value) {
