@@ -7,8 +7,8 @@ import {
   query,
   validationResult,
 } from 'express-validator'
-import MOCKED_USERS from './constants.ts'
-import { ReqBody, ReqQuery, WithoutNullableKeys } from './types.ts'
+import MOCKED_USERS from 'libs/constants.ts'
+import { ReqBody, ReqQuery, WithoutNullableKeys } from 'types'
 import { emptyErrorMessage, notStringErrorMessage } from './utils.ts'
 import { createUserValidationSchema } from './validation-schemas.ts'
 
@@ -22,7 +22,7 @@ tutorial_10_routes.get(
   query('value')
     .isString().withMessage(notStringErrorMessage('value'))
     .notEmpty().withMessage(emptyErrorMessage('value')),
-  (req: e.Request<{}, {}, {}, ReqQuery>, res) => {
+  (req: e.Request<{}, {}, {}, ReqQuery>, res: e.Response) => {
     const result = validationResult(req)
 
     if (!result.isEmpty()) {

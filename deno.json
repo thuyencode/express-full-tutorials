@@ -4,6 +4,8 @@
     "start": "deno run --allow-read --allow-env  --allow-net --env-file main.ts"
   },
   "imports": {
+    "libs/": "./libs/",
+    "types": "./types/index.ts",
     "@types/express": "npm:@types/express@^4",
     "express": "npm:express@^4.21.1",
     "express-validator": "npm:express-validator@^7.2.0"

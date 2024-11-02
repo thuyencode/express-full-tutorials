@@ -1,15 +1,8 @@
 // deno-lint-ignore-file ban-ts-comment ban-types
 // @deno-types="@types/express"
 import e from 'express'
-
-const MOCKED_USERS = [
-  { id: 1, username: 'javascript', name: 'JavaScript' },
-  { id: 2, username: 'typescript', name: 'TypeScript' },
-  { id: 3, username: 'java', name: 'Java' },
-  { id: 4, username: 'rust', name: 'Rust' },
-  { id: 5, username: 'zig', name: 'Zig' },
-  { id: 6, username: 'gdscript', name: 'GDScript' },
-]
+import MOCKED_USERS from 'libs/constants.ts'
+import { ReqParams } from 'types'
 
 const tutorial_9_routes = e.Router()
 
@@ -20,10 +13,6 @@ const loggingMiddleware = (
 ) => {
   console.info(`${req.method} - ${req.url}`)
   next()
-}
-
-interface ReqParams {
-  id: string
 }
 
 const resolveIndexByUserIdMiddleware = (
@@ -86,7 +75,7 @@ interface ReqBody {
 tutorial_9_routes.patch(
   '/api/users/:id',
   resolveIndexByUserIdMiddleware,
-  (req: e.Request<{}, {}, ReqBody, {}>, res) => {
+  (req: e.Request<{}, {}, ReqBody, {}>, res: e.Response) => {
     const { body, findUserIndex } = req
 
     MOCKED_USERS[findUserIndex] = { ...MOCKED_USERS[findUserIndex], ...body }
@@ -98,7 +87,7 @@ tutorial_9_routes.patch(
 tutorial_9_routes.put(
   '/api/users/:id',
   resolveIndexByUserIdMiddleware,
-  (req: e.Request<{}, {}, ReqBody, {}>, res) => {
+  (req: e.Request<{}, {}, ReqBody, {}>, res: e.Response) => {
     const { body, findUserIndex } = req
 
     // @ts-ignore

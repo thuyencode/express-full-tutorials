@@ -1,21 +1,9 @@
 // @deno-types="@types/express"
 import e from 'express'
-
-const MOCKED_USERS = [
-  { id: 1, username: 'javascript', name: 'JavaScript' },
-  { id: 2, username: 'typescript', name: 'TypeScript' },
-  { id: 3, username: 'java', name: 'Java' },
-  { id: 4, username: 'rust', name: 'Rust' },
-  { id: 5, username: 'zig', name: 'Zig' },
-  { id: 6, username: 'gdscript', name: 'GDScript' },
-] as const
+import MOCKED_USERS from 'libs/constants.ts'
+import { ReqQuery } from 'types'
 
 const tutorial_4_routes = e.Router()
-
-interface ReqQuery {
-  filter?: keyof typeof MOCKED_USERS[number]
-  value?: string
-}
 
 tutorial_4_routes.get(
   '/api/users',

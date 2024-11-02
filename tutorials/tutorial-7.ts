@@ -1,25 +1,9 @@
 // @deno-types="@types/express"
 import e from 'express'
-
-const MOCKED_USERS = [
-  { id: 1, username: 'javascript', name: 'JavaScript' },
-  { id: 2, username: 'typescript', name: 'TypeScript' },
-  { id: 3, username: 'java', name: 'Java' },
-  { id: 4, username: 'rust', name: 'Rust' },
-  { id: 5, username: 'zig', name: 'Zig' },
-  { id: 6, username: 'gdscript', name: 'GDScript' },
-]
+import MOCKED_USERS from 'libs/constants.ts'
+import { ReqBody, ReqParams } from 'types'
 
 const tutorial_7_routes = e.Router()
-
-interface ReqBody {
-  username?: string
-  name?: string
-}
-
-interface ReqParams {
-  id: string
-}
 
 tutorial_7_routes.patch(
   '/api/users/:id',

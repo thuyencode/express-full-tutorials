@@ -1,10 +1,6 @@
 // @deno-types="@types/express"
 import e from 'express'
-
-const MOCKED_USERS = [
-  { id: 1, username: 'hello', name: 'Hello' },
-  { id: 2, username: 'world', name: 'World' },
-] as const
+import MOCKED_USERS from 'libs/constants.ts'
 
 const tutorial_3_routes = e.Router()
 
