@@ -12,8 +12,6 @@ const MOCKED_USERS = [
 
 const tutorial_7_routes = e.Router()
 
-tutorial_7_routes.use(e.json())
-
 interface ReqBody {
   username?: string
   name?: string

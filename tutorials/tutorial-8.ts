@@ -12,8 +12,6 @@ const MOCKED_USERS = [
 
 const tutorial_8_routes = e.Router()
 
-tutorial_8_routes.use(e.json())
-
 tutorial_8_routes.get('/api/users/', (_req, res) => {
   res.send(MOCKED_USERS)
 })
