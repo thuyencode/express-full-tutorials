@@ -1,5 +1,5 @@
 import { Schema } from 'express-validator'
-import { emptyErrorMessage, notStringErrorMessage } from './utils.ts'
+import { emptyErrorMessage, notStringErrorMessage } from 'libs/utils.ts'
 
 export const createUserValidationSchema: Schema = {
   username: {

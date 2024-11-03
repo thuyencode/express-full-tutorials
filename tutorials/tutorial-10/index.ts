@@ -9,7 +9,7 @@ import {
 } from 'express-validator'
 import MOCKED_USERS from 'libs/constants.ts'
 import { ReqBody, ReqQuery, WithoutNullableKeys } from 'types'
-import { emptyErrorMessage, notStringErrorMessage } from './utils.ts'
+import { emptyErrorMessage, notStringErrorMessage } from 'libs/utils.ts'
 import { createUserValidationSchema } from './validation-schemas.ts'
 
 const tutorial_10_routes = e.Router()
