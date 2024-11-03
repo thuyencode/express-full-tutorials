@@ -2,9 +2,12 @@
   "version": "4",
   "specifiers": {
     "npm:@types/cookie-parser@^1.4.7": "1.4.7",
+    "npm:@types/express-session@^1.18.0": "1.18.0",
     "npm:@types/express@4": "4.17.21",
+    "npm:@types/node@*": "22.5.4",
     "npm:cookie-parser@^1.4.7": "1.4.7",
     "npm:dayjs@^1.11.13": "1.11.13",
+    "npm:express-session@^1.18.1": "1.18.1",
     "npm:express-validator@^7.2.0": "7.2.0",
     "npm:express@*": "4.21.1",
     "npm:express@^4.21.1": "4.21.1"
@@ -36,6 +39,12 @@
         "@types/qs",
         "@types/range-parser",
         "@types/send"
+      ]
+    },
+    "@types/express-session@1.18.0": {
+      "integrity": "sha512-27JdDRgor6PoYlURY+Y5kCakqp5ulC0kmf7y+QwaY+hv9jEFuQOThgkjyA53RP3jmKuBsH5GR6qEfFmvb8mwOA==",
+      "dependencies": [
+        "@types/express"
       ]
     },
     "@types/express@4.17.21": {
@@ -133,11 +142,14 @@
       "integrity": "sha512-nGUvgXnotP3BsjiLX2ypbQnWoGUPIIfHQNZkkC668ntrzGWEZVW70HDEB1qnNGMicPje6EttlIgzo51YSwNQGw==",
       "dependencies": [
         "cookie@0.7.2",
-        "cookie-signature"
+        "cookie-signature@1.0.6"
       ]
     },
     "cookie-signature@1.0.6": {
       "integrity": "sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ=="
+    },
+    "cookie-signature@1.0.7": {
+      "integrity": "sha512-NXdYc3dLr47pBkpUCHtKSwIOQXLVn8dZEuywboCOJY/osA0wFSLlSawr3KN8qXJEyX66FcONTH8EIlVuK0yyFA=="
     },
     "cookie@0.7.1": {
       "integrity": "sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w=="
@@ -192,6 +204,19 @@
     "etag@1.8.1": {
       "integrity": "sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg=="
     },
+    "express-session@1.18.1": {
+      "integrity": "sha512-a5mtTqEaZvBCL9A9aqkrtfz+3SMDhOVUnjafjo+s7A9Txkq+SVX2DLvSp1Zrv4uCXa3lMSK3viWnh9Gg07PBUA==",
+      "dependencies": [
+        "cookie@0.7.2",
+        "cookie-signature@1.0.7",
+        "debug",
+        "depd",
+        "on-headers",
+        "parseurl",
+        "safe-buffer",
+        "uid-safe"
+      ]
+    },
     "express-validator@7.2.0": {
       "integrity": "sha512-I2ByKD8panjtr8Y05l21Wph9xk7kk64UMyvJCl/fFM/3CTJq8isXYPLeKW/aZBCdb/LYNv63PwhY8khw8VWocA==",
       "dependencies": [
@@ -208,7 +233,7 @@
         "content-disposition",
         "content-type",
         "cookie@0.7.1",
-        "cookie-signature",
+        "cookie-signature@1.0.6",
         "debug",
         "depd",
         "encodeurl@2.0.0",
@@ -354,6 +379,9 @@
         "ee-first"
       ]
     },
+    "on-headers@1.0.2": {
+      "integrity": "sha512-pZAE+FJLoyITytdqK0U5s+FIpjN0JP3OzFi/u8Rx+EV5/W+JTWGXG8xFzevE7AjBfDqHv/8vL8qQsIhHnqRkrA=="
+    },
     "parseurl@1.3.3": {
       "integrity": "sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ=="
     },
@@ -372,6 +400,9 @@
       "dependencies": [
         "side-channel"
       ]
+    },
+    "random-bytes@1.0.0": {
+      "integrity": "sha512-iv7LhNVO047HzYR3InF6pUcUsPQiHTM1Qal51DcGSuZFBil1aBBWG5eHPNek7bvILMaYJ/8RU1e8w1AMdHmLQQ=="
     },
     "range-parser@1.2.1": {
       "integrity": "sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg=="
@@ -454,6 +485,12 @@
         "mime-types"
       ]
     },
+    "uid-safe@2.1.5": {
+      "integrity": "sha512-KPHm4VL5dDXKz01UuEd88Df+KzynaohSL9fBh096KWAxSKZQDI2uBrVqtvRM4rwrIrRRKsdLNML/lnaaVSRioA==",
+      "dependencies": [
+        "random-bytes"
+      ]
+    },
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
     },
@@ -470,12 +507,24 @@
       "integrity": "sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg=="
     }
   },
+  "redirects": {
+    "https://esm.sh/dayjs": "https://esm.sh/dayjs@1.11.13",
+    "https://esm.sh/dayjs/plugin/duration": "https://esm.sh/dayjs@1.11.13/plugin/duration"
+  },
+  "remote": {
+    "https://esm.sh/dayjs@1.11.13": "9e26962f5cf0e45efb9d4ca5a43fabce85ba5e5027d0a8cfc30d6d10368a86f5",
+    "https://esm.sh/dayjs@1.11.13/plugin/duration": "a28f23596adf090befdf8369f37c3f75ad758583eea9896fda130d9d7f51b910",
+    "https://esm.sh/v135/dayjs@1.11.13": "9e26962f5cf0e45efb9d4ca5a43fabce85ba5e5027d0a8cfc30d6d10368a86f5",
+    "https://esm.sh/v135/dayjs@1.11.13/denonext/dayjs.mjs": "1cb45182e325c07c470907e10801bef7ff18b939bd2ed6545048024b3d01cf02",
+    "https://esm.sh/v135/dayjs@1.11.13/denonext/plugin/duration.js": "f206f9190d75dd148f630709b852ee239779e3e05d6d0e87a0238f6119a53024"
+  },
   "workspace": {
     "dependencies": [
       "npm:@types/cookie-parser@^1.4.7",
+      "npm:@types/express-session@^1.18.0",
       "npm:@types/express@4",
       "npm:cookie-parser@^1.4.7",
-      "npm:dayjs@^1.11.13",
+      "npm:express-session@^1.18.1",
       "npm:express-validator@^7.2.0",
       "npm:express@^4.21.1"
     ]

@@ -4,11 +4,12 @@
     "start": "deno run --allow-read --allow-env  --allow-net --env-file main.ts"
   },
   "imports": {
-    "@types/cookie-parser": "npm:@types/cookie-parser@^1.4.7",
-    "cookie-parser": "npm:cookie-parser@^1.4.7",
-    "dayjs": "npm:dayjs@^1.11.13",
     "libs/": "./libs/",
     "types": "./types/index.ts",
+    "@types/cookie-parser": "npm:@types/cookie-parser@^1.4.7",
+    "@types/express-session": "npm:@types/express-session@^1.18.0",
+    "cookie-parser": "npm:cookie-parser@^1.4.7",
+    "express-session": "npm:express-session@^1.18.1",
     "@types/express": "npm:@types/express@^4",
     "express": "npm:express@^4.21.1",
     "express-validator": "npm:express-validator@^7.2.0"

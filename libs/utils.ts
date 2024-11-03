@@ -17,5 +17,5 @@ export const addMinutes = (date: Date, minutes: number) => {
 const MILLISECONDS_PER_MINUTE = 1000
 
 export const minutesToMilliseconds = (minutes: number) => {
-  return MILLISECONDS_PER_MINUTE * minutes
+  return MILLISECONDS_PER_MINUTE * minutes * 60
 }
