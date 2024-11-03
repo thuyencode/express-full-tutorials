@@ -8,6 +8,7 @@ import tutorial_7_routes from './tutorial-7.ts'
 import tutorial_8_routes from './tutorial-8.ts'
 import tutorial_9_routes from './tutorial-9.ts'
 import tutorial_10_routes from './tutorial-10/index.ts'
+import tutorial_12_routes from './tutorial-12.ts'
 
 const tutorials_routes = e.Router()
 
@@ -20,5 +21,6 @@ tutorials_routes.use('/7', tutorial_7_routes)
 tutorials_routes.use('/8', tutorial_8_routes)
 tutorials_routes.use('/9', tutorial_9_routes)
 tutorials_routes.use('/10', tutorial_10_routes)
+tutorials_routes.use('/12', tutorial_12_routes)
 
 export default tutorials_routes

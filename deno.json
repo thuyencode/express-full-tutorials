@@ -4,6 +4,9 @@
     "start": "deno run --allow-read --allow-env  --allow-net --env-file main.ts"
   },
   "imports": {
+    "@types/cookie-parser": "npm:@types/cookie-parser@^1.4.7",
+    "cookie-parser": "npm:cookie-parser@^1.4.7",
+    "dayjs": "npm:dayjs@^1.11.13",
     "libs/": "./libs/",
     "types": "./types/index.ts",
     "@types/express": "npm:@types/express@^4",
@@ -13,5 +16,8 @@
   "fmt": {
     "semiColons": false,
     "singleQuote": true
+  },
+  "compilerOptions": {
+    "types": ["./types/express/index.d.ts"]
   }
 }
