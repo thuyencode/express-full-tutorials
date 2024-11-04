@@ -6,6 +6,11 @@ export const emptyErrorMessage = (field: Field) =>
 export const notStringErrorMessage = (field: Field) =>
   `'${field}' must be a string`
 
+export const mustBeBetweenErrorMessage = (
+  field: Field,
+  { min, max }: { min: number; max: number },
+) => `'${field}''s value must be in between ${min} and ${max} characters`
+
 export const addMinutes = (date: Date, minutes: number) => {
   const newDate = new Date(date.getTime())
 

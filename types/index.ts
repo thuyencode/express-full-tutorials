@@ -18,3 +18,7 @@ export interface ReqParams {
 }
 
 export type Field = keyof (ReqQuery & ReqBody)
+
+export interface CartItem extends Pick<User, 'name'> {
+  price?: number
+}
