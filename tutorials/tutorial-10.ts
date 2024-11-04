@@ -10,7 +10,7 @@ import {
 import MOCKED_USERS from 'libs/constants.ts'
 import { ReqBody, ReqQuery, WithoutNullableKeys } from 'types'
 import { emptyErrorMessage, notStringErrorMessage } from 'libs/utils.ts'
-import { createUserValidationSchema } from './validation-schemas.ts'
+import { createUserValidationSchema } from 'libs/validation-schemas.ts'
 
 const tutorial_10_routes = e.Router()
 
@@ -46,16 +46,26 @@ tutorial_10_routes.get(
 tutorial_10_routes.post(
   '/api/users',
   checkSchema(createUserValidationSchema),
-  (req: e.Request<{}, {}, ReqBody, {}>, res: e.Response) => {
+  (
+    req: e.Request<{}, {}, Omit<ReqBody, 'password'>, {}>,
+    res: e.Response,
+  ) => {
     const result = validationResult(req)
 
     if (!result.isEmpty()) {
       return res.status(400).send({ errors: result.array() })
     }
 
-    const { username, name } = matchedData<WithoutNullableKeys<ReqBody>>(req)
+    const { username, name } = matchedData<
+      WithoutNullableKeys<Omit<ReqBody, 'password'>>
+    >(req)
 
-    MOCKED_USERS.push({ id: MOCKED_USERS.length + 1, username, name })
+    MOCKED_USERS.push({
+      id: MOCKED_USERS.length + 1,
+      username,
+      name,
+      password: 'password',
+    })
 
     res.status(201).send(MOCKED_USERS[MOCKED_USERS.length - 1])
   },

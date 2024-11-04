@@ -4,15 +4,14 @@ export type WithoutNullableKeys<T> = {
   [K in keyof T]-?: WithoutNullableKeys<NonNullable<T[K]>>
 }
 
+export type User = typeof MOCKED_USERS[number]
+
 export interface ReqQuery {
-  filter?: keyof typeof MOCKED_USERS[number]
+  filter?: keyof User
   value?: string
 }
 
-export interface ReqBody {
-  username?: string
-  name?: string
-}
+export type ReqBody = Partial<Omit<User, 'id'>>
 
 export interface ReqParams {
   id: string

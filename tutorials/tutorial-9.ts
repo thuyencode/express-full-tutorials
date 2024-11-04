@@ -2,7 +2,7 @@
 // @deno-types="@types/express"
 import e from 'express'
 import MOCKED_USERS from 'libs/constants.ts'
-import { ReqParams } from 'types'
+import { ReqBody, ReqParams } from 'types'
 
 const tutorial_9_routes = e.Router()
 
@@ -66,11 +66,6 @@ tutorial_9_routes.delete(
     res.status(200).send(...deletedUser)
   },
 )
-
-interface ReqBody {
-  username?: string
-  name?: string
-}
 
 tutorial_9_routes.patch(
   '/api/users/:id',
