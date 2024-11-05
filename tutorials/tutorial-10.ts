@@ -61,7 +61,7 @@ tutorial_10_routes.post(
     >(req)
 
     MOCKED_USERS.push({
-      id: MOCKED_USERS.length + 1,
+      id: String(MOCKED_USERS.length + 1),
       username,
       name,
       password: 'password',

@@ -19,17 +19,18 @@ tutorial_6_routes.put(
       })
     }
 
-    const findUserIndex = MOCKED_USERS.findIndex(({ id }) => id === parsedId)
+    const givenId = String(parsedId)
+    const findUserIndex = MOCKED_USERS.findIndex(({ id }) => id === givenId)
 
     if (findUserIndex === -1) {
       return res.status(404).send({
-        error: `User with id '${parsedId}' not found.`,
+        error: `User with id '${givenId}' not found.`,
       })
     }
 
     // deno-lint-ignore ban-ts-comment
     // @ts-ignore
-    MOCKED_USERS[findUserIndex] = { id: parsedId, ...body }
+    MOCKED_USERS[findUserIndex] = { id: givenId, ...body }
 
     res.status(200).send(MOCKED_USERS[findUserIndex])
   },

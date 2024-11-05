@@ -26,11 +26,12 @@ const resolveIndexByUserIdMiddleware = (
     return res.status(400).send({ error: 'Bad Request. Invalid ID.' })
   }
 
-  const findUserIndex = MOCKED_USERS.findIndex(({ id }) => id === parsedId)
+  const givenId = String(parsedId)
+  const findUserIndex = MOCKED_USERS.findIndex(({ id }) => id === givenId)
 
   if (findUserIndex === -1) {
     return res.status(404).send({
-      error: `User with id '${parsedId}' not found.`,
+      error: `User with id '${givenId}' not found.`,
     })
   }
 
