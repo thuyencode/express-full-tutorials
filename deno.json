@@ -5,8 +5,10 @@
   },
   "imports": {
     "@std/collections": "jsr:@std/collections@^1.0.9",
+    "@types/connect-mongodb-session": "npm:@types/connect-mongodb-session@^2.4.7",
     "@types/passport": "npm:@types/passport@^1.0.17",
     "@types/passport-local": "npm:@types/passport-local@^1.0.38",
+    "connect-mongodb-session": "npm:connect-mongodb-session@^5.0.0",
     "libs/": "./libs/",
     "passport/": "./passport/",
     "mongoose/": "./mongoose/",

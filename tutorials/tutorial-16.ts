@@ -8,18 +8,17 @@ import cookieParser from 'cookie-parser'
 import passport from 'passport'
 
 import { checkSchema, matchedData, validationResult } from 'express-validator'
+import { MONGODB_CONNECTION_URI } from 'libs/constants.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 import { createUserValidationSchema } from 'libs/validation-schemas.ts'
 import mongooes from 'mongoose'
 import UserModel from 'mongoose/User.model.ts'
 import 'passport/local-strategy.ts'
 import { ReqBody, WithoutNullableKeys } from 'types'
-
-const MONGODB_CONNECTION = Deno.env.get('MONGODB_CONNECTION') ||
-  'mongodb://localhost:27017/express-full-tutorials?directConnection=true'
+import sessionStore from 'libs/session-store.ts'
 
 mongooes
-  .connect(MONGODB_CONNECTION)
+  .connect(MONGODB_CONNECTION_URI)
   .then(() => console.info('Connected to MongoDB'))
   .catch((error) => console.error(error))
 
@@ -47,6 +46,7 @@ tutorial_16_routes.use(session({
   cookie: {
     maxAge: minutesToMilliseconds(1),
   },
+  store: sessionStore,
 }))
 
 tutorial_16_routes.use(passport.session())
