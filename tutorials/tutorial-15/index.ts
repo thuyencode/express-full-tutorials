@@ -10,6 +10,18 @@ import passport from 'passport'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 import './local-strategy.ts'
 
+const checkIfAuthedMiddleware = (
+  req: e.Request,
+  res: e.Response,
+  next: e.NextFunction,
+) => {
+  if (!req.user) {
+    res.status(401).send({ error: 'Unauthorized request' })
+  }
+
+  next()
+}
+
 const tutorial_15_routes = e.Router()
 
 tutorial_15_routes.use(cookieParser(Deno.env.get('COOKIE_SECRET_KEY')))
@@ -36,14 +48,23 @@ tutorial_15_routes.post(
 
 tutorial_15_routes.get(
   '/api/auth/status',
+  checkIfAuthedMiddleware,
   (req, res) => {
-    const user = req.user
+    res.status(200).send(req.user)
+  },
+)
 
-    if (!user) {
-      res.status(401).send({ error: 'Unauthorized request' })
-    }
+tutorial_15_routes.post(
+  '/api/auth/logout',
+  checkIfAuthedMiddleware,
+  (req, res) => {
+    req.logOut((error) => {
+      if (error) {
+        return res.status(500).send({ error })
+      }
 
-    res.status(200).send(user)
+      res.status(200).send({ message: 'Logout successfully' })
+    })
   },
 )
 
