@@ -13,7 +13,7 @@ tutorial_5_routes.post(
 
     if (username && name) {
       MOCKED_USERS.push({
-        id: MOCKED_USERS.length + 1,
+        id: String(MOCKED_USERS.length + 1),
         username,
         name,
         password: 'password',

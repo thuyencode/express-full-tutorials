@@ -9,9 +9,9 @@ tutorial_7_routes.patch(
   '/api/users/:id',
   // deno-lint-ignore ban-types
   (req: e.Request<ReqParams, {}, ReqBody, {}>, res) => {
-    const { body, params: { id } } = req
+    const { body, params } = req
 
-    const parsedId = Number.parseInt(id)
+    const parsedId = Number.parseInt(params.id)
 
     if (Number.isNaN(parsedId)) {
       return res.status(400).send({
@@ -19,7 +19,9 @@ tutorial_7_routes.patch(
       })
     }
 
-    const findUserIndex = MOCKED_USERS.findIndex(({ id }) => id === parsedId)
+    const id = String(parsedId)
+
+    const findUserIndex = MOCKED_USERS.findIndex((user) => user.id === id)
 
     if (findUserIndex === -1) {
       return res.status(404).send({
