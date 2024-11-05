@@ -15,8 +15,8 @@ const checkIfAuthedMiddleware = (
   res: e.Response,
   next: e.NextFunction,
 ) => {
-  if (!req.user) {
-    res.status(401).send({ error: 'Unauthorized request' })
+  if (!req.isAuthenticated()) {
+    return res.status(401).send({ error: 'Unauthorized request' })
   }
 
   next()
