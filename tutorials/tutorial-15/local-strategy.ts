@@ -4,7 +4,7 @@ import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 
 import { omit } from '@std/collections/omit'
-import MOCKED_USERS from 'libs/constants.ts'
+import { MOCKED_USERS } from 'libs/constants.ts'
 
 passport.serializeUser<Express.User['id']>((user, done) => {
   done(null, user.id)

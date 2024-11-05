@@ -7,7 +7,7 @@ import {
   query,
   validationResult,
 } from 'express-validator'
-import MOCKED_USERS from 'libs/constants.ts'
+import { MOCKED_USERS } from 'libs/constants.ts'
 import { ReqBody, ReqQuery, WithoutNullableKeys } from 'types'
 import { emptyErrorMessage, notStringErrorMessage } from 'libs/utils.ts'
 import { createUserValidationSchema } from 'libs/validation-schemas.ts'

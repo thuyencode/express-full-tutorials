@@ -1,4 +1,4 @@
-import MOCKED_USERS from 'libs/constants.ts'
+import { MOCKED_USERS } from 'libs/constants.ts'
 
 export type WithoutNullableKeys<T> = {
   [K in keyof T]-?: WithoutNullableKeys<NonNullable<T[K]>>

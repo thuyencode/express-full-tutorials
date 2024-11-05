@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 
 import { checkSchema, matchedData, validationResult } from 'express-validator'
-import MOCKED_USERS from 'libs/constants.ts'
+import { MOCKED_USERS } from 'libs/constants.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 import {
   authUserValidationSchema,

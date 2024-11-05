@@ -3,7 +3,7 @@ import e from 'express'
 // @deno-types="@types/cookie-parser"
 import cookieParser from 'cookie-parser'
 
-import MOCKED_USERS from 'libs/constants.ts'
+import { MOCKED_USERS } from 'libs/constants.ts'
 import { addMinutes } from 'libs/utils.ts'
 
 const tutorial_12_routes = e.Router()

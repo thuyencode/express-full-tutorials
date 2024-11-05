@@ -1,6 +1,6 @@
 // @deno-types="@types/express"
 import e from 'express'
-import MOCKED_USERS from 'libs/constants.ts'
+import { MOCKED_USERS } from 'libs/constants.ts'
 import { ReqBody } from 'types'
 
 const tutorial_5_routes = e.Router()
