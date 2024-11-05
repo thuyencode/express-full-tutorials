@@ -22,3 +22,5 @@ export type Field = keyof (ReqQuery & ReqBody)
 export interface CartItem extends Pick<User, 'name'> {
   price?: number
 }
+
+export type ExpressUser = Omit<User, 'password'>

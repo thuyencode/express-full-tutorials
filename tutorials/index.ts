@@ -11,6 +11,7 @@ import tutorial_10_routes from './tutorial-10.ts'
 import tutorial_12_routes from './tutorial-12.ts'
 import tutorial_13_routes from './tutorial-13.ts'
 import tutorial_14_routes from './tutorial-14.ts'
+import tutorial_15_routes from './tutorial-15/index.ts'
 
 const tutorials_routes = e.Router()
 
@@ -26,5 +27,6 @@ tutorials_routes.use('/10', tutorial_10_routes)
 tutorials_routes.use('/12', tutorial_12_routes)
 tutorials_routes.use('/13', tutorial_13_routes)
 tutorials_routes.use('/14', tutorial_14_routes)
+tutorials_routes.use('/15', tutorial_15_routes)
 
 export default tutorials_routes

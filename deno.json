@@ -4,7 +4,12 @@
     "start": "deno run --allow-read --allow-env  --allow-net --env-file main.ts"
   },
   "imports": {
+    "@std/collections": "jsr:@std/collections@^1.0.9",
+    "@types/passport": "npm:@types/passport@^1.0.17",
+    "@types/passport-local": "npm:@types/passport-local@^1.0.38",
     "libs/": "./libs/",
+    "passport": "npm:passport@^0.7.0",
+    "passport-local": "npm:passport-local@^1.0.0",
     "types": "./types/index.ts",
     "@types/cookie-parser": "npm:@types/cookie-parser@^1.4.7",
     "@types/express-session": "npm:@types/express-session@^1.18.0",
