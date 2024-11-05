@@ -7,15 +7,16 @@ import cookieParser from 'cookie-parser'
 // @deno-types="@types/passport"
 import passport from 'passport'
 
+import UserModel from 'configs/mongoose/User.model.ts'
+import sessionStore from 'configs/session/store.ts'
 import { checkSchema, matchedData, validationResult } from 'express-validator'
 import { MONGODB_CONNECTION_URI } from 'libs/constants.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 import { createUserValidationSchema } from 'libs/validation-schemas.ts'
 import mongooes from 'mongoose'
-import UserModel from 'mongoose/User.model.ts'
-import 'passport/local-strategy.ts'
 import { ReqBody, WithoutNullableKeys } from 'types'
-import sessionStore from 'libs/session-store.ts'
+
+import 'configs/passport/local.strategy.ts'
 
 mongooes
   .connect(MONGODB_CONNECTION_URI)

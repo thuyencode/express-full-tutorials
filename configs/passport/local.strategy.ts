@@ -4,7 +4,7 @@ import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 
 import { pick } from '@std/collections/pick'
-import UserModel from 'mongoose/User.model.ts'
+import UserModel from '../mongoose/User.model.ts'
 
 passport.serializeUser<Express.User['id']>((user, done) => {
   done(null, user.id)
