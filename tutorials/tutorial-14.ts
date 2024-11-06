@@ -7,7 +7,11 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 
 import { checkSchema, matchedData, validationResult } from 'express-validator'
-import { MOCKED_USERS } from 'libs/constants.ts'
+import {
+  COOKIE_SECRET_KEY,
+  MOCKED_USERS,
+  SESSION_SECRET_KEY,
+} from 'libs/constants.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 import {
   authUserValidationSchema,
@@ -38,11 +42,10 @@ const checkIfAuthedMiddleware = (
   next()
 }
 
-tutorial_14_routes.use(cookieParser(Deno.env.get('COOKIE_SECRET_KEY')))
+tutorial_14_routes.use(cookieParser(COOKIE_SECRET_KEY))
 
 tutorial_14_routes.use(session({
-  secret: Deno.env.get('SESSION_SECRET_KEY') ||
-    'Please set a value for "SESSION_SECRET_KEY" in .env',
+  secret: SESSION_SECRET_KEY,
   saveUninitialized: false,
   resave: false,
   cookie: {

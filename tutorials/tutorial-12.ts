@@ -3,12 +3,12 @@ import e from 'express'
 // @deno-types="@types/cookie-parser"
 import cookieParser from 'cookie-parser'
 
-import { MOCKED_USERS } from 'libs/constants.ts'
+import { COOKIE_SECRET_KEY, MOCKED_USERS } from 'libs/constants.ts'
 import { addMinutes } from 'libs/utils.ts'
 
 const tutorial_12_routes = e.Router()
 
-tutorial_12_routes.use(cookieParser(Deno.env.get('COOKIE_SECRET_KEY')))
+tutorial_12_routes.use(cookieParser(COOKIE_SECRET_KEY))
 
 tutorial_12_routes.get('/api/cookie', (_req, res) => {
   res.cookie('hello', 'world', {

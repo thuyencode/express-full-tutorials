@@ -10,18 +10,12 @@ import passport from 'passport'
 import UserModel from 'configs/mongoose/User.model.ts'
 import sessionStore from 'configs/session/store.ts'
 import { checkSchema, matchedData, validationResult } from 'express-validator'
-import { MONGODB_CONNECTION_URI } from 'libs/constants.ts'
+import { COOKIE_SECRET_KEY, SESSION_SECRET_KEY } from 'libs/constants.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 import { createUserValidationSchema } from 'libs/validation-schemas.ts'
-import mongooes from 'mongoose'
 import { ReqBody, WithoutNullableKeys } from 'types'
 
 import 'configs/passport/local.strategy.ts'
-
-mongooes
-  .connect(MONGODB_CONNECTION_URI)
-  .then(() => console.info('Connected to MongoDB'))
-  .catch((error) => console.error(error))
 
 const checkIfAuthedMiddleware = (
   req: e.Request,
@@ -37,11 +31,10 @@ const checkIfAuthedMiddleware = (
 
 const tutorial_16_routes = e.Router()
 
-tutorial_16_routes.use(cookieParser(Deno.env.get('COOKIE_SECRET_KEY')))
+tutorial_16_routes.use(cookieParser(COOKIE_SECRET_KEY))
 
 tutorial_16_routes.use(session({
-  secret: Deno.env.get('SESSION_SECRET_KEY') ||
-    'Please set a value for "SESSION_SECRET_KEY" in .env',
+  secret: SESSION_SECRET_KEY,
   saveUninitialized: false,
   resave: false,
   cookie: {
