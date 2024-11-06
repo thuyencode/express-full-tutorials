@@ -5,12 +5,15 @@ import { Strategy as LocalStrategy } from 'passport-local'
 
 import { pick } from '@std/collections/pick'
 import UserModel from 'configs/mongoose/User.model.ts'
+import { ExpressUser } from 'types'
 
-passport.serializeUser<Express.User['id']>((user, done) => {
+const PROPS_TO_BE_KEPT = ['username', 'name', 'id'] as const
+
+passport.serializeUser<ExpressUser['id']>((user, done) => {
   done(null, user.id)
 })
 
-passport.deserializeUser<Express.User['id']>(async (id, done) => {
+passport.deserializeUser<ExpressUser['id']>(async (id, done) => {
   try {
     const user = await UserModel.findById(id)
 
@@ -18,7 +21,7 @@ passport.deserializeUser<Express.User['id']>(async (id, done) => {
       throw new Error(`User with ID "${id}" not found`)
     }
 
-    done(null, pick(user, ['username', 'name', 'id']))
+    done(null, pick(user, PROPS_TO_BE_KEPT))
   } catch (error) {
     done(error, false)
   }
@@ -37,7 +40,7 @@ export default passport.use(
         throw new Error('Wrong password')
       }
 
-      done(null, pick(user, ['username', 'name', 'id']))
+      done(null, pick(user, PROPS_TO_BE_KEPT))
     } catch (error) {
       done(error, false)
     }

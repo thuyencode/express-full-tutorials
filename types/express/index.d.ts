@@ -1,4 +1,4 @@
-import { ExpressUser } from 'types'
+import { DiscordUser, ExpressUser } from 'types'
 
 declare global {
   namespace Express {
@@ -6,7 +6,7 @@ declare global {
       findUserIndex: number
     }
 
-    export interface User extends ExpressUser {}
+    export interface User extends ExpressUser, DiscordUser {}
   }
 }
 

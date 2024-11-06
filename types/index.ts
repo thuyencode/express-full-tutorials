@@ -1,10 +1,15 @@
-import { MOCKED_USERS } from 'libs/constants.ts'
+import { Profile } from 'passport-discord-auth'
 
 export type WithoutNullableKeys<T> = {
   [K in keyof T]-?: WithoutNullableKeys<NonNullable<T[K]>>
 }
 
-export type User = typeof MOCKED_USERS[number]
+export interface User {
+  id: string
+  username: string
+  name?: string
+  password: string
+}
 
 export interface ReqQuery {
   filter?: keyof User
@@ -24,3 +29,5 @@ export interface CartItem extends Pick<User, 'name'> {
 }
 
 export type ExpressUser = Omit<User, 'password'>
+
+export type DiscordUser = Pick<Profile, 'id' | 'username' | 'global_name'>

@@ -5,12 +5,13 @@ import { Strategy as LocalStrategy } from 'passport-local'
 
 import { omit } from '@std/collections/omit'
 import { MOCKED_USERS } from 'libs/constants.ts'
+import { ExpressUser } from 'types'
 
-passport.serializeUser<Express.User['id']>((user, done) => {
+passport.serializeUser<ExpressUser['id']>((user, done) => {
   done(null, user.id)
 })
 
-passport.deserializeUser<Express.User['id']>((id, done) => {
+passport.deserializeUser<ExpressUser['id']>((id, done) => {
   try {
     const user = MOCKED_USERS.find((user) => user.id === id)
 
