@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser'
 // @deno-types="@types/passport"
 import passport from 'passport'
 
+import { pick } from '@std/collections/pick'
 import UserModel from 'configs/mongoose/User.model.ts'
 import sessionStore from 'configs/session/store.ts'
 import { checkSchema, matchedData, validationResult } from 'express-validator'
@@ -68,7 +69,7 @@ tutorial_16_routes.post(
     try {
       const savedUser = await newUser.save()
 
-      res.status(201).send(savedUser)
+      res.status(201).send(pick(savedUser, ['username', 'name', 'id']))
     } catch (error) {
       res.sendStatus(400)
 
