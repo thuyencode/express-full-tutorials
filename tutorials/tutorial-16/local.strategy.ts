@@ -4,8 +4,7 @@ import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 
 import { pick } from '@std/collections/pick'
-import { comparePasswords } from 'libs/utils.ts'
-import UserModel from '../mongoose/User.model.ts'
+import UserModel from 'configs/mongoose/User.model.ts'
 
 passport.serializeUser<Express.User['id']>((user, done) => {
   done(null, user.id)
@@ -34,9 +33,7 @@ export default passport.use(
         throw new Error(`User '${username}' not found`)
       }
 
-      const isPasswordCorrect = await comparePasswords(password, user.password)
-
-      if (!isPasswordCorrect) {
+      if (user.password !== password) {
         throw new Error('Wrong password')
       }
 

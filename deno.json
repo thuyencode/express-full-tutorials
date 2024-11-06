@@ -4,6 +4,7 @@
     "start": "deno run -A --env-file main.ts"
   },
   "imports": {
+    "@node-rs/bcrypt": "npm:@node-rs/bcrypt@^1.10.5",
     "@std/collections": "jsr:@std/collections@^1.0.9",
     "@types/connect-mongodb-session": "npm:@types/connect-mongodb-session@^2.4.7",
     "@types/passport": "npm:@types/passport@^1.0.17",

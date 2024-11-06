@@ -11,7 +11,7 @@ import UserModel from 'configs/mongoose/User.model.ts'
 import sessionStore from 'configs/session/store.ts'
 import { checkSchema, matchedData, validationResult } from 'express-validator'
 import { COOKIE_SECRET_KEY, SESSION_SECRET_KEY } from 'libs/constants.ts'
-import { minutesToMilliseconds } from 'libs/utils.ts'
+import { hashPassword, minutesToMilliseconds } from 'libs/utils.ts'
 import { createUserValidationSchema } from 'libs/validation-schemas.ts'
 import { ReqBody, WithoutNullableKeys } from 'types'
 
@@ -29,11 +29,11 @@ const checkIfAuthedMiddleware = (
   next()
 }
 
-const tutorial_16_routes = e.Router()
+const tutorial_17_routes = e.Router()
 
-tutorial_16_routes.use(cookieParser(COOKIE_SECRET_KEY))
+tutorial_17_routes.use(cookieParser(COOKIE_SECRET_KEY))
 
-tutorial_16_routes.use(session({
+tutorial_17_routes.use(session({
   secret: SESSION_SECRET_KEY,
   saveUninitialized: false,
   resave: false,
@@ -43,9 +43,9 @@ tutorial_16_routes.use(session({
   store: sessionStore,
 }))
 
-tutorial_16_routes.use(passport.session())
+tutorial_17_routes.use(passport.session())
 
-tutorial_16_routes.post(
+tutorial_17_routes.post(
   '/api/users',
   checkSchema(createUserValidationSchema),
   async (
@@ -63,7 +63,9 @@ tutorial_16_routes.post(
       WithoutNullableKeys<Omit<ReqBody, 'password'>>
     >(req)
 
-    const newUser = new UserModel({ username, name, password: 'password' })
+    const password = await hashPassword('password')
+
+    const newUser = new UserModel({ username, name, password })
 
     try {
       const savedUser = await newUser.save()
@@ -77,7 +79,7 @@ tutorial_16_routes.post(
   },
 )
 
-tutorial_16_routes.post(
+tutorial_17_routes.post(
   '/api/auth',
   passport.authenticate('local'),
   (_req, res) => {
@@ -85,7 +87,7 @@ tutorial_16_routes.post(
   },
 )
 
-tutorial_16_routes.get(
+tutorial_17_routes.get(
   '/api/auth/status',
   checkIfAuthedMiddleware,
   (req, res) => {
@@ -93,18 +95,4 @@ tutorial_16_routes.get(
   },
 )
 
-tutorial_16_routes.post(
-  '/api/auth/logout',
-  checkIfAuthedMiddleware,
-  (req, res) => {
-    req.logOut((error) => {
-      if (error) {
-        return res.status(500).send({ error })
-      }
-
-      res.status(200).send({ message: 'Logout successfully' })
-    })
-  },
-)
-
-export default tutorial_16_routes
+export default tutorial_17_routes

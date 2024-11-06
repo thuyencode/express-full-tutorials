@@ -1,4 +1,5 @@
 import { Field } from 'types'
+import bcrypt from '@node-rs/bcrypt'
 
 export const emptyErrorMessage = (field: Field) =>
   `'${field}' must not be empty`
@@ -23,4 +24,17 @@ const MILLISECONDS_PER_MINUTE = 1000
 
 export const minutesToMilliseconds = (minutes: number) => {
   return MILLISECONDS_PER_MINUTE * minutes * 60
+}
+
+const SALT_ROUNDS = 10
+
+export const hashPassword = async (password: string) => {
+  return await bcrypt.hash(password, SALT_ROUNDS)
+}
+
+export const comparePasswords = async (
+  plainPassword: string,
+  hashedPassword: string,
+) => {
+  return await bcrypt.compare(plainPassword, hashedPassword)
 }
