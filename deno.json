@@ -5,6 +5,7 @@
   },
   "imports": {
     "@node-rs/bcrypt": "npm:@node-rs/bcrypt@^1.10.5",
+    "@prisma/client": "npm:@prisma/client@^5.22.0",
     "@std/collections": "jsr:@std/collections@^1.0.9",
     "@types/connect-mongodb-session": "npm:@types/connect-mongodb-session@^2.4.7",
     "@types/passport": "npm:@types/passport@^1.0.17",
@@ -12,9 +13,10 @@
     "connect-mongodb-session": "npm:connect-mongodb-session@^5.0.0",
     "libs/": "./libs/",
     "configs/": "./configs/",
-    "mongoose": "npm:mongoose@^8.8.0",
+    "prisma/client": "./prisma/client.ts",
     "passport": "npm:passport@^0.7.0",
     "passport-local": "npm:passport-local@^1.0.0",
+    "prisma": "npm:prisma@^5.22.0",
     "types": "./types/index.ts",
     "@types/cookie-parser": "npm:@types/cookie-parser@^1.4.7",
     "@types/express-session": "npm:@types/express-session@^1.18.0",
@@ -30,5 +32,6 @@
   },
   "compilerOptions": {
     "types": ["./types/express/index.d.ts"]
-  }
+  },
+  "nodeModulesDir": "auto"
 }

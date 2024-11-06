@@ -7,7 +7,6 @@ import cookieParser from 'cookie-parser'
 // @deno-types="@types/passport"
 import passport from 'passport'
 
-import UserModel from 'configs/mongoose/User.model.ts'
 import sessionStore from 'configs/session/store.ts'
 import { checkSchema, matchedData, validationResult } from 'express-validator'
 import { COOKIE_SECRET_KEY, SESSION_SECRET_KEY } from 'libs/constants.ts'
@@ -16,6 +15,7 @@ import { createUserValidationSchema } from 'libs/validation-schemas.ts'
 import { ReqBody, WithoutNullableKeys } from 'types'
 
 import 'configs/passport/local.strategy.ts'
+import prisma from 'prisma/client'
 
 const checkIfAuthedMiddleware = (
   req: e.Request,
@@ -65,12 +65,12 @@ tutorial_17_routes.post(
 
     const password = await hashPassword('password')
 
-    const newUser = new UserModel({ username, name, password })
-
     try {
-      const savedUser = await newUser.save()
+      const newUser = await prisma.user.create({
+        data: { username, name, password },
+      })
 
-      res.status(201).send(savedUser)
+      res.status(201).send(newUser)
     } catch (error) {
       res.sendStatus(400)
 

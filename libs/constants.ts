@@ -7,7 +7,7 @@ export const MOCKED_USERS = [
   { id: '6', username: 'gdscript', name: 'GDScript', password: 'password' },
 ]
 
-export const MONGODB_CONNECTION_URI = Deno.env.get('MONGODB_CONNECTION_URI') ||
+export const DATABASE_URL = Deno.env.get('DATABASE_URL') ||
   'mongodb://localhost:27017/express-full-tutorials?directConnection=true'
 
 export const MONGODB_SESSION_COLLECTION_NAME =
