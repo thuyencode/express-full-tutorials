@@ -5,15 +5,15 @@ import cookieParser from 'cookie-parser'
 // @deno-types="@types/express-session"
 import session from 'express-session'
 
-import { COOKIE_SECRET_KEY, SESSION_SECRET_KEY } from 'libs/constants.ts'
+import env from 'libs/env.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 
 const tutorial_13_routes = e.Router()
 
-tutorial_13_routes.use(cookieParser(COOKIE_SECRET_KEY))
+tutorial_13_routes.use(cookieParser(env.COOKIE_SECRET_KEY))
 
 tutorial_13_routes.use(session({
-  secret: SESSION_SECRET_KEY,
+  secret: env.SESSION_SECRET_KEY,
   saveUninitialized: false,
   resave: false,
   cookie: {

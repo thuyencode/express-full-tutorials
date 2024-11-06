@@ -7,11 +7,8 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 
 import { checkSchema, matchedData, validationResult } from 'express-validator'
-import {
-  COOKIE_SECRET_KEY,
-  MOCKED_USERS,
-  SESSION_SECRET_KEY,
-} from 'libs/constants.ts'
+import { MOCKED_USERS } from 'libs/constants.ts'
+import env from 'libs/env.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 import {
   authUserValidationSchema,
@@ -42,10 +39,10 @@ const checkIfAuthedMiddleware = (
   next()
 }
 
-tutorial_14_routes.use(cookieParser(COOKIE_SECRET_KEY))
+tutorial_14_routes.use(cookieParser(env.COOKIE_SECRET_KEY))
 
 tutorial_14_routes.use(session({
-  secret: SESSION_SECRET_KEY,
+  secret: env.SESSION_SECRET_KEY,
   saveUninitialized: false,
   resave: false,
   cookie: {

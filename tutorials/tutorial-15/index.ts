@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser'
 // @deno-types="@types/passport"
 import passport from 'passport'
 
-import { COOKIE_SECRET_KEY, SESSION_SECRET_KEY } from 'libs/constants.ts'
+import env from 'libs/env.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 
 import './local-strategy.ts'
@@ -26,10 +26,10 @@ const checkIfAuthedMiddleware = (
 
 const tutorial_15_routes = e.Router()
 
-tutorial_15_routes.use(cookieParser(COOKIE_SECRET_KEY))
+tutorial_15_routes.use(cookieParser(env.COOKIE_SECRET_KEY))
 
 tutorial_15_routes.use(session({
-  secret: SESSION_SECRET_KEY,
+  secret: env.SESSION_SECRET_KEY,
   saveUninitialized: false,
   resave: false,
   cookie: {

@@ -6,15 +6,3 @@ export const MOCKED_USERS = [
   { id: '5', username: 'zig', name: 'Zig', password: 'password' },
   { id: '6', username: 'gdscript', name: 'GDScript', password: 'password' },
 ]
-
-export const MONGODB_CONNECTION_URI = Deno.env.get('MONGODB_CONNECTION_URI') ||
-  'mongodb://localhost:27017/express-full-tutorials?directConnection=true'
-
-export const MONGODB_SESSION_COLLECTION_NAME =
-  Deno.env.get('MONGODB_SESSION_COLLECTION_NAME') || 'sessions'
-
-export const COOKIE_SECRET_KEY = Deno.env.get('COOKIE_SECRET_KEY') ||
-  'Please set a value for "COOKIE_SECRET_KEY" in .env'
-
-export const SESSION_SECRET_KEY = Deno.env.get('SESSION_SECRET_KEY') ||
-  'Please set a value for "SESSION_SECRET_KEY" in .env'

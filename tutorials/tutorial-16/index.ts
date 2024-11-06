@@ -11,7 +11,7 @@ import { pick } from '@std/collections/pick'
 import UserModel from 'configs/mongoose/User.model.ts'
 import sessionStore from 'configs/session/store.ts'
 import { checkSchema, matchedData, validationResult } from 'express-validator'
-import { COOKIE_SECRET_KEY, SESSION_SECRET_KEY } from 'libs/constants.ts'
+import env from 'libs/env.ts'
 import { minutesToMilliseconds } from 'libs/utils.ts'
 import { createUserValidationSchema } from 'libs/validation-schemas.ts'
 import { ReqBody, WithoutNullableKeys } from 'types'
@@ -32,10 +32,10 @@ const checkIfAuthedMiddleware = (
 
 const tutorial_16_routes = e.Router()
 
-tutorial_16_routes.use(cookieParser(COOKIE_SECRET_KEY))
+tutorial_16_routes.use(cookieParser(env.COOKIE_SECRET_KEY))
 
 tutorial_16_routes.use(session({
-  secret: SESSION_SECRET_KEY,
+  secret: env.SESSION_SECRET_KEY,
   saveUninitialized: false,
   resave: false,
   cookie: {
