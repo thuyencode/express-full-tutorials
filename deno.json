@@ -1,22 +1,29 @@
 {
   "tasks": {
-    "dev": "deno run -A --env-file --watch main.ts",
-    "start": "deno run -A --env-file main.ts"
+    "dev": "deno run -A --env-file=.env.dev --watch main.ts",
+    "start": "deno run -A --env-file main.ts",
+    "test:e2e": "deno test -A --env-file=.env.test __tests__/e2e"
   },
   "imports": {
     "@node-rs/bcrypt": "npm:@node-rs/bcrypt@^1.10.5",
     "@std/collections": "jsr:@std/collections@^1.0.9",
+    "@std/expect": "jsr:@std/expect@^1.0.7",
+    "@std/testing": "jsr:@std/testing@^1.0.4",
     "@types/connect-mongodb-session": "npm:@types/connect-mongodb-session@^2.4.7",
     "@types/passport": "npm:@types/passport@^1.0.17",
     "@types/passport-local": "npm:@types/passport-local@^1.0.38",
+    "@types/supertest": "npm:@types/supertest@^6.0.2",
     "@valibot/valibot": "jsr:@valibot/valibot@^0.42.1",
     "connect-mongodb-session": "npm:connect-mongodb-session@^5.0.0",
     "libs/": "./libs/",
     "configs/": "./configs/",
+    "app": "./app.ts",
+    "mongodb": "./mongodb.ts",
     "mongoose": "npm:mongoose@^8.8.0",
     "passport": "npm:passport@^0.7.0",
     "passport-discord-auth": "npm:passport-discord-auth@^1.2.0",
     "passport-local": "npm:passport-local@^1.0.0",
+    "supertest": "npm:supertest@^7.0.0",
     "types": "./types/index.ts",
     "@types/cookie-parser": "npm:@types/cookie-parser@^1.4.7",
     "@types/express-session": "npm:@types/express-session@^1.18.0",

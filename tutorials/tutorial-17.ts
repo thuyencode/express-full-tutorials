@@ -88,6 +88,20 @@ tutorial_17_routes.post(
   },
 )
 
+tutorial_17_routes.post(
+  '/api/auth/logout',
+  checkIfAuthedMiddleware,
+  (req, res) => {
+    req.logOut((error) => {
+      if (error) {
+        return res.status(500).send({ error })
+      }
+
+      res.status(200).send({ message: 'Logout successfully' })
+    })
+  },
+)
+
 tutorial_17_routes.get(
   '/api/auth/status',
   checkIfAuthedMiddleware,

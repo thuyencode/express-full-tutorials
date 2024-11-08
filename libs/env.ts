@@ -25,6 +25,7 @@ const EnvSchema = v.object({
   DISCORD_CLIENT_ID: NonEmptySchema,
   DISCORD_CLIENT_SECRET: SecretKeySchema,
   DISCORD_REDIRECT_URL: v.pipe(UrlSchema, v.startsWith('http')),
+  TEST: v.optional(v.string()),
 })
 
 const env = v.parse(EnvSchema, Deno.env.toObject())

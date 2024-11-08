@@ -1,23 +1,9 @@
-// @deno-types="@types/express"
-import e from 'express'
-
+import app from 'app'
 import env from 'libs/env.ts'
-import mongooes from 'mongoose'
-import tutorials_routes from './tutorials/index.ts'
+import { startMongodbConnection } from 'mongodb'
 
-const PORT = env.PORT
+await startMongodbConnection()
 
-const app = e()
-
-app.use(e.json())
-
-mongooes
-  .connect(env.MONGODB_CONNECTION_URI)
-  .then(() => console.info('Connected to MongoDB'))
-  .catch((error) => console.error(error))
-
-app.use('/tutorials', tutorials_routes)
-
-app.listen(PORT, () => {
-  console.log(`Running on port ${PORT}.`)
+app.listen(env.PORT, () => {
+  console.log(`Running on port ${env.PORT}.`)
 })

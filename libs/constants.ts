@@ -1,4 +1,6 @@
-export const MOCKED_USERS = [
+import { User } from 'types'
+
+export const MOCKED_USERS: User[] = [
   { id: '1', username: 'javascript', name: 'JavaScript', password: 'password' },
   { id: '2', username: 'typescript', name: 'TypeScript', password: 'password' },
   { id: '3', username: 'java', name: 'Java', password: 'password' },
